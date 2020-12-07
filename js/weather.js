@@ -1,30 +1,28 @@
 function gettingJSON(){
     //Display the forecast
-    // Your code here.
+    
     document.querySelector("#forecast").style.display = "block";
 
-    //Set default location if one isn't provided
+    //如果没有输入值的时候默认返回“Ann Arbor, US”的值
     let location = document.querySelector("#location").value || "Ann Arbor, US";
 
     // Your code here.
     console.log("Location is : " + location);
 
-    //set default temperature format if one isn't provided
-    let format = document.querySelectorAll("input[name=temp]:checked")[0];
-    if (format) {
-        format = format.value;
-    } else {
-        format = "imperial";
+    //如果没有输入值的时候，默认选择华氏天气度数单位
+    let unit = 'metric';
+
+    const isHuashi = document.querySelector("#fahrenheit").checked;
+    
+    if (isHuashi) {
+        unit = 'imperial';
     }
 
-    // Your code here.
-    console.log("Format is " + format);
-
-    //set the query  
-    let query = 'https://api.openweathermap.org/data/2.5/weather?q='+location+'&units='+format+'&appid=936e4de0cd28fde44e7c4e2f5f773f9f';
+    //api引用查询在这里
+    let query = 'https://api.openweathermap.org/data/2.5/weather?q='+location+'&units='+unit+'&appid=936e4de0cd28fde44e7c4e2f5f773f9f';
     //api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=936e4de0cd28fde44e7c4e2f5f773f9f
     //api.openweathermap.org/data/2.5/weather?q=London&units=imperial
-    // Your code here.  
+
     
     console.log("Query is :" + query);
 
@@ -35,7 +33,7 @@ function gettingJSON(){
     let loc = document.querySelector("#loc");
     let temp = document.querySelector("#temp");
     let tempImg = document.querySelector("#tempImg");
-    // Your code here.
+
 
     //<img src="http://openweathermap.org/img/wn/01n@2x.png" width="50" height="50">
 
@@ -43,7 +41,7 @@ function gettingJSON(){
         //Use returned json to update the values of the three 
         //elements in HTML.  
         //I would print the JSON to the console
-        // Your code here.
+
 	    //Use json to update the values.  I would 
 	    //print it to the console
         console.log(JSON.stringify(json));
